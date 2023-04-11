@@ -27,7 +27,7 @@ const Form = () => {
   };
 
   useEffect(() => {
-    if (postSuccess === "success") {
+    if (postSuccess) {
       navigate("/");
     }
   }, [postSuccess]);

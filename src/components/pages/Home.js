@@ -23,7 +23,7 @@ const Home = () => {
               <div className="card" key={item.id}>
                 <img src={item.image} alt={item.name} height={250} />
                 <div className="card-body">
-                  <h5 className="card-title">{item.name}</h5>
+                  <h5 className="card-title">{item.name.slice(0, 20)}...</h5>
                   <p className="card-info">{item.full_text.slice(0, 20)}</p>
                   <p className="card-text">
                     {item.description.slice(0, 20)}....

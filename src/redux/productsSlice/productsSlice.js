@@ -33,9 +33,9 @@ const newsSlice = createSlice({
   extraReducers: (build) => {
     build
       .addCase(getProducts.pending, (state, action) => {
+        state.newsLoadingStatus = true;
         state.postSuccess = "";
         state.deleteSuccess = null;
-        state.newsLoadingStatus = true;
       })
       .addCase(getProducts.fulfilled, (state, action) => {
         state.news = action.payload;
@@ -52,8 +52,9 @@ const newsSlice = createSlice({
         state.postProductLoading = true;
       })
       .addCase(postProduct.fulfilled, (state, action) => {
-        state.postSuccess = "success";
+        state.postSuccess = action.payload;
         state.postProductLoading = false;
+        console.log(action.payload);
       })
       .addCase(postProduct.rejected, (state, action) => {
         state.postProductLoading = false;
@@ -96,9 +97,8 @@ const newsSlice = createSlice({
         state.updateLoading = true;
       })
       .addCase(updateProduct.fulfilled, (state, action) => {
-        state.updateSuccess = "success";
+        state.updateSuccess = action.payload;
         state.updateLoading = false;
-        console.log(action.payload);
       })
       .addCase(updateProduct.rejected, (state, action) => {
         state.updateLoading = false;
